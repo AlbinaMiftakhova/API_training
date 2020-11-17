@@ -46,6 +46,9 @@ namespace API_training
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3(); 
         }
     }
 }
