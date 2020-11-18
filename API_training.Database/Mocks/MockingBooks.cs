@@ -1,13 +1,16 @@
 ﻿using API_training.Database.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace API_training.Database.Mocks
 {
+    /// <summary>
+    /// Mocking-объект для коллекции сущностей "Книги".
+    /// </summary>
     public static class MockingBooks
     {
+        /// <summary>
+        /// Коллекция сущностей "Книги".
+        /// </summary>
         public static List<Books> Books = new List<Books>
         {
             new Books{Id=1, Author = "Лев Толстой", Name="Война и мир", Publisher = "Лексика", PublishingYear=1996},

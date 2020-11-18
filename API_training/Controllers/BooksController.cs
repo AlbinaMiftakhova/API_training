@@ -8,6 +8,9 @@ using API_training.Common;
 
 namespace API_training.Controllers
 {
+    /// <summary>
+    /// Контроллер для работы с данными о книгах.
+    /// </summary>
     [Route("/[controller]")]
     [ApiController]
     [ApiExplorerSettings(GroupName = DocumentPartsConst.Books)]
@@ -16,13 +19,21 @@ namespace API_training.Controllers
         private readonly ILogger<BooksController> _logger;
         private readonly IBooksInterface _booksService;
 
+        /// <summary>
+        /// Инициализирует экземпляр <see cref="BooksController"/>
+        /// </summary>
+        /// <param name="booksService">Сервис одежды.</param>
+        /// <param name="logger">Логгер.</param>
         public BooksController(IBooksInterface booksService, ILogger<BooksController> logger)
         {
             _booksService = booksService;
             _logger = logger;
         }
 
-
+        /// <summary>
+        /// Получение перечня доступных книг.
+        /// </summary>
+        /// <returns>Коллекция сущностей "Книги".</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         public IActionResult Get()
@@ -32,7 +43,11 @@ namespace API_training.Controllers
             return Ok(response);
         }
 
-
+        /// <summary>
+        /// Получение книги по идентификатору.
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <returns>Сущность "Книга"</returns>
         [HttpGet("{id}", Name = "Get")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         public IActionResult Get(long id)
@@ -42,7 +57,15 @@ namespace API_training.Controllers
             return Ok(response);
         }
 
-
+        /// <summary>
+        /// Добавляет книгу в список доступных.
+        /// </summary>
+        /// <param name="name">Название книги</param>
+        /// <param name="author">Автор книги</param>
+        /// <param name="id">Идентификатор книги</param>
+        /// <param name="publisher">Издательство</param>
+        /// <param name="publishingYear">Год издания</param>
+        /// <returns>Новый список доступных книг.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         [ProducesResponseType(StatusCodes.Status406NotAcceptable, Type = typeof(IEnumerable<DTOBooks>))]
@@ -53,6 +76,11 @@ namespace API_training.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Удаляет сущность "Книги" с заданным идентификатором.
+        /// </summary>
+        /// <param name="id">Идентификатор книги</param>
+        /// <returns>Новый список доступных книг.</returns>
         [HttpDelete]
         [Route("delete/{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
