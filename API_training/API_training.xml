@@ -43,14 +43,14 @@
             </summary>
             <returns>Коллекция сущностей "Книги".</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Get(System.Int64)">
+        <member name="M:API_training.Controllers.BooksController.GetById(System.Int64)">
             <summary>
             Получение книги по идентификатору.
             </summary>
             <param name="id">Идентификатор книги</param>
             <returns>Сущность "Книга"</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Post(System.String,System.String,System.Int64,System.String,System.Int32)">
+        <member name="M:API_training.Controllers.BooksController.AddBook(System.String,System.String,System.Int64,System.String,System.Int32)">
             <summary>
             Добавляет книгу в список доступных.
             </summary>
@@ -61,12 +61,18 @@
             <param name="publishingYear">Год издания</param>
             <returns>Новый список доступных книг.</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Delete(System.Int64)">
+        <member name="M:API_training.Controllers.BooksController.DeleteBook(System.Int64)">
             <summary>
             Удаляет сущность "Книги" с заданным идентификатором.
             </summary>
             <param name="id">Идентификатор книги</param>
             <returns>Новый список доступных книг.</returns>
+        </member>
+        <member name="M:API_training.Controllers.BooksController.SortByName">
+            <summary>
+            Сортирует список сущностей "Книги" по названию.
+            </summary>
+            <returns>Возвращает отсортированный список сущностей "Книги"</returns>
         </member>
         <member name="T:API_training.Startup">
             <summary>
