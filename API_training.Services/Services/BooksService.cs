@@ -24,10 +24,10 @@ namespace API_training.Services.Services
         {
             return _mapper.Map<List<Books>>(MockingBooks.Books);
         }
-        public List<Books> GetByName(string name)
+        public List<Books> GetById(long id)
         {
-            var SelectedByName = MockingBooks.Books.Where(t => t.Name == name).ToList();
-            return _mapper.Map<List<Books>>(SelectedByName);
+            var SelectedById = MockingBooks.Books.Where(t => t.Id == id).ToList();
+            return _mapper.Map<List<Books>>(SelectedById);
         }
         public List<Books> Delete(long id)
         {

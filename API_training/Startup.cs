@@ -1,4 +1,5 @@
 using System.Reflection;
+using API_training.Common;
 using API_training.Services.Bootstraps;
 using API_training.Services.Services;
 using AutoMapper;
@@ -25,6 +26,7 @@ namespace API_training
             services.AddControllers();
             services.ConfigureServices();
             services.AddAutoMapper(typeof(BooksService).GetTypeInfo().Assembly);
+            services.ConfigureSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

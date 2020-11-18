@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace API_training.Database.Domain
+﻿namespace API_training.Database.Domain
 {
     public class Books
     {

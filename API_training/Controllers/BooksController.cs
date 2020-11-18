@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using API_training.Models.DTO;
 using API_training.Services.Interfaces;
+using API_training.Common;
 
 namespace API_training.Controllers
 {
     [Route("/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = DocumentPartsConst.Books)]
     public class BooksController : ControllerBase
     {
         private readonly ILogger<BooksController> _logger;
@@ -31,12 +33,12 @@ namespace API_training.Controllers
         }
 
 
-        [HttpGet("{name}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Get(string name)
+        public IActionResult Get(long id)
         {
-            _logger.LogInformation("Books/Get by name was requested.");
-            var response = _booksService.GetByName(name);
+            _logger.LogInformation("Books/Get by id was requested.");
+            var response = _booksService.GetById(id);
             return Ok(response);
         }
 
@@ -51,6 +53,7 @@ namespace API_training.Controllers
             return Ok(response);
         }
 
+        [HttpDelete]
         [Route("delete/{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         public IActionResult Delete(long id)
