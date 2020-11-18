@@ -26,5 +26,4 @@ namespace API_training
                           webBuilder.UseStartup<Startup>();
                       });
     }
-    }
 }
