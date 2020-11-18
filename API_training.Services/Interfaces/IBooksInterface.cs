@@ -12,5 +12,6 @@ namespace API_training.Services.Interfaces
         List<Books> GetById(long id);
         List<Books> Delete(long id);
         List<Books> Post(string name, string author, long id, string publisher, int publishingYear);
+        List<Books> SortByName();
     }
 }

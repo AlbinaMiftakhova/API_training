@@ -64,5 +64,15 @@ namespace API_training.Services.Services
             MockingBooks.Books.Add(new Books { Id = id, Name = name, Author = author, Publisher = publisher, PublishingYear = publishingYear });
             return _mapper.Map<List<Books>>(MockingBooks.Books);
         }
+
+        /// <summary>
+        /// Метод, сортирующий список сущностей "Книги" книги по названию.
+        /// </summary>
+        /// <returns>Отсортированный список книг</returns>
+        public List<Books> SortByName()
+        {
+            MockingBooks.Books.Sort((n1, n2) => n1.Name.CompareTo(n2.Name));
+            return _mapper.Map<List<Books>>(MockingBooks.Books);
+        }
     }
 }
