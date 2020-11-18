@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\API_training.Database\API_training.Database.csproj" />
+  </ItemGroup>
+  
 </Project>

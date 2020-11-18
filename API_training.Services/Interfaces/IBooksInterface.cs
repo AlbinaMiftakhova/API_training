@@ -1,10 +1,11 @@
 ﻿using API_training.Database.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace API_training.Services.Interfaces
 {
+    /// <summary>
+    /// Интерфейс сервиса для работы с данными о книгах.
+    /// </summary>
     public interface IBooksInterface
     {
         List<Books> Get();
