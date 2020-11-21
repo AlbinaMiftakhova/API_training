@@ -12,14 +12,14 @@ using Microsoft.Extensions.Hosting;
 namespace API_training
 {
     /// <summary>
-    /// Конфигурация приложения.
+    /// Конфигурация приложения
     /// </summary>
     public class Startup
     {
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
-        /// <param name="configuration">Конфигурация.</param>
+        /// <param name="configuration">Конфигурация</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,9 +31,9 @@ namespace API_training
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// Mетод вызывается средой исполнения. Используется для регистрации сервисов в IoC контейнере.
+        /// Mетод вызывается средой исполнения. Используется для регистрации сервисов в IoC контейнере
         /// </summary>
-        /// <param name="services">Коллекция сервисов.</param>
+        /// <param name="services">Коллекция сервисов</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -43,10 +43,10 @@ namespace API_training
         }
 
         /// <summary>
-        /// Mетод вызывается средой исполнения. Используется для конфигурации окружения для обработки HTTP запроса.
+        /// Mетод вызывается средой исполнения. Используется для конфигурации окружения для обработки HTTP запроса
         /// </summary>
-        /// <param name="app">Средство конфигурации приложения.</param>
-        /// <param name="env">Информация об окружении, в котором работает приложение.</param>
+        /// <param name="app">Средство конфигурации приложения</param>
+        /// <param name="env">Информация об окружении, в котором работает приложение</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

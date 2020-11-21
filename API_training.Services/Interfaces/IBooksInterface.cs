@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace API_training.Services.Interfaces
 {
     /// <summary>
-    /// Интерфейс сервиса для работы с данными о книгах.
+    /// Интерфейс сервиса для работы с данными о книгах
     /// </summary>
     public interface IBooksInterface
     {

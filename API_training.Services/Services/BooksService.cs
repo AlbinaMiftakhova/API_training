@@ -29,18 +29,18 @@ namespace API_training.Services.Services
         }
 
         /// <summary>
-        /// Метод, получающий сущность книги по ее идентификатору.
+        /// Метод, получающий сущность книги по ее идентификатору
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
         /// <returns>Сущность "Книги"</returns>
         public List<Books> GetById(long id)
         {
-            var SelectedById = MockingBooks.Books.Where(t => t.Id == id).ToList();
-            return _mapper.Map<List<Books>>(SelectedById);
+            var selectedById = MockingBooks.Books.Where(t => t.Id == id).ToList();
+            return _mapper.Map<List<Books>>(selectedById);
         }
 
         /// <summary>
-        /// Метод, удаляющий сущность из списка доступных книг.
+        /// Метод, удаляющий сущность из списка доступных книг
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
         /// <returns>Обновленный список сущностей "Книги"</returns>
@@ -51,7 +51,7 @@ namespace API_training.Services.Services
         }
 
         /// <summary>
-        /// Метод, добавляющий сущность в список доступных книг.
+        /// Метод, добавляющий сущность в список доступных книг
         /// </summary>
         /// <param name="name">Название книги</param>
         /// <param name="author">Автор книги</param>
@@ -66,7 +66,7 @@ namespace API_training.Services.Services
         }
 
         /// <summary>
-        /// Метод, сортирующий список сущностей "Книги" книги по названию.
+        /// Метод, сортирующий список сущностей "Книги" книги по названию
         /// </summary>
         /// <returns>Отсортированный список книг</returns>
         public List<Books> SortByName()
