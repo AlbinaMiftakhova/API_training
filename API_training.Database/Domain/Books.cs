@@ -1,5 +1,8 @@
 ﻿namespace API_training.Database.Domain
 {
+    /// <summary>
+    /// Книги
+    /// </summary>
     public class Books
     {
         /// <summary>

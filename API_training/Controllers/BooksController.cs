@@ -5,11 +5,12 @@ using Microsoft.Extensions.Logging;
 using API_training.Models.DTO;
 using API_training.Services.Interfaces;
 using API_training.Common;
+using API_training.Database.Domain;
 
 namespace API_training.Controllers
 {
     /// <summary>
-    /// Контроллер для работы с данными о книгах.
+    /// Контроллер для работы с данными о книгах
     /// </summary>
     [Route("/[controller]/[action]")]
     [ApiController]
@@ -22,8 +23,8 @@ namespace API_training.Controllers
         /// <summary>
         /// Инициализирует экземпляр <see cref="BooksController"/>
         /// </summary>
-        /// <param name="booksService">Сервис одежды.</param>
-        /// <param name="logger">Логгер.</param>
+        /// <param name="booksService">Сервис книг</param>
+        /// <param name="logger">Логгер</param>
         public BooksController(IBooksInterface booksService, ILogger<BooksController> logger)
         {
             _booksService = booksService;
@@ -31,9 +32,9 @@ namespace API_training.Controllers
         }
 
         /// <summary>
-        /// Получение перечня доступных книг.
+        /// Получение перечня доступных книг
         /// </summary>
-        /// <returns>Коллекция сущностей "Книги".</returns>
+        /// <returns>Коллекция сущностей "Книги"</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         public IActionResult Get()
@@ -44,11 +45,12 @@ namespace API_training.Controllers
         }
 
         /// <summary>
-        /// Получение книги по идентификатору.
+        /// Получение книги по идентификатору
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
         /// <returns>Сущность "Книга"</returns>
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
         public IActionResult GetById(long id)
         {
@@ -58,31 +60,28 @@ namespace API_training.Controllers
         }
 
         /// <summary>
-        /// Добавляет книгу в список доступных книг.
+        /// Добавляет книгу в список доступных книг
         /// </summary>
-        /// <param name="name">Название книги</param>
-        /// <param name="author">Автор книги</param>
-        /// <param name="id">Идентификатор книги</param>
-        /// <param name="publisher">Издательство</param>
-        /// <param name="publishingYear">Год издания</param>
-        /// <returns>Новый список доступных книг.</returns>
+        /// <param book="book">Экземпляр книги</param>
+        /// <returns>Новый список доступных книг</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult AddBook(string name, string author, long id, string publisher, int publishingYear)
+        public IActionResult Post([FromBody] Books book)
         {
             _logger.LogInformation("Books/Post was requested.");
-            var response = _booksService.Post(name, author, id, publisher, publishingYear);
+            var response = _booksService.Post(book);
             return Ok(response);
         }
 
         /// <summary>
-        /// Удаляет сущность "Книги" с заданным идентификатором.
+        /// Удаляет сущность "Книги" с заданным идентификатором
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
-        /// <returns>Новый список доступных книг.</returns>
-        [HttpDelete("{id}")]
+        /// <returns>Новый список доступных книг</returns>
+        [HttpDelete]
+        [Route("{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult DeleteBook(long id)
+        public IActionResult Delete(long id)
         {
             _logger.LogInformation("Books/Delete was requested.");
             var response = _booksService.Delete(id);
@@ -90,12 +89,12 @@ namespace API_training.Controllers
         }
 
         /// <summary>
-        /// Сортирует список сущностей "Книги" по названию.
+        /// Сортирует список сущностей "Книги" по названию
         /// </summary>
         /// <returns>Возвращает отсортированный список сущностей "Книги"</returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult SortByName()
+        public IActionResult Put()
         {
             _logger.LogInformation("Books/Put was requested.");
             var response = _booksService.SortByName();

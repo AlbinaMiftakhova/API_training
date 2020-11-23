@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace API_training.Database.Mocks
 {
     /// <summary>
-    /// Mocking-объект для коллекции сущностей "Книги".
+    /// Mocking-объект для коллекции сущностей "Книги"
     /// </summary>
     public static class MockingBooks
     {
         /// <summary>
-        /// Коллекция сущностей "Книги".
+        /// Коллекция сущностей "Книги"
         /// </summary>
         public static List<Books> Books = new List<Books>
         {

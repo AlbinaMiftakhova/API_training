@@ -1,5 +1,6 @@
 ﻿using API_training.Database.Domain;
 using API_training.Database.Mocks;
+using API_training.Models.DTO;
 using API_training.Services.Interfaces;
 using AutoMapper;
 using System.Collections.Generic;
@@ -29,18 +30,18 @@ namespace API_training.Services.Services
         }
 
         /// <summary>
-        /// Метод, получающий сущность книги по ее идентификатору.
+        /// Метод, получающий сущность книги по ее идентификатору
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
         /// <returns>Сущность "Книги"</returns>
         public List<Books> GetById(long id)
         {
-            var SelectedById = MockingBooks.Books.Where(t => t.Id == id).ToList();
-            return _mapper.Map<List<Books>>(SelectedById);
+            var selectedById = MockingBooks.Books.Where(t => t.Id == id).ToList();
+            return _mapper.Map<List<Books>>(selectedById);
         }
 
         /// <summary>
-        /// Метод, удаляющий сущность из списка доступных книг.
+        /// Метод, удаляющий сущность из списка доступных книг
         /// </summary>
         /// <param name="id">Идентификатор книги</param>
         /// <returns>Обновленный список сущностей "Книги"</returns>
@@ -51,22 +52,18 @@ namespace API_training.Services.Services
         }
 
         /// <summary>
-        /// Метод, добавляющий сущность в список доступных книг.
+        /// Метод, добавляющий сущность в список доступных книг
         /// </summary>
-        /// <param name="name">Название книги</param>
-        /// <param name="author">Автор книги</param>
-        /// <param name="id">Идентификатор книги</param>
-        /// <param name="publisher">Издательство</param>
-        /// <param name="publishingYear">Год издания</param>
+        /// <param book="book">Экземпляр книги</param>
         /// <returns>Обновленный список сущностей "Книги"</returns>
-        public List<Books> Post(string name, string author, long id, string publisher, int publishingYear)
+        public List<Books> Post(Books book)
         {
-            MockingBooks.Books.Add(new Books { Id = id, Name = name, Author = author, Publisher = publisher, PublishingYear = publishingYear });
+            MockingBooks.Books.Add(book);
             return _mapper.Map<List<Books>>(MockingBooks.Books);
         }
 
         /// <summary>
-        /// Метод, сортирующий список сущностей "Книги" книги по названию.
+        /// Метод, сортирующий список сущностей "Книги" книги по названию
         /// </summary>
         /// <returns>Отсортированный список книг</returns>
         public List<Books> SortByName()
