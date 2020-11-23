@@ -1,5 +1,6 @@
 ﻿using API_training.Database.Domain;
 using API_training.Database.Mocks;
+using API_training.Models.DTO;
 using API_training.Services.Interfaces;
 using AutoMapper;
 using System.Collections.Generic;
@@ -53,15 +54,11 @@ namespace API_training.Services.Services
         /// <summary>
         /// Метод, добавляющий сущность в список доступных книг
         /// </summary>
-        /// <param name="name">Название книги</param>
-        /// <param name="author">Автор книги</param>
-        /// <param name="id">Идентификатор книги</param>
-        /// <param name="publisher">Издательство</param>
-        /// <param name="publishingYear">Год издания</param>
+        /// <param book="book">Экземпляр книги</param>
         /// <returns>Обновленный список сущностей "Книги"</returns>
-        public List<Books> Post(string name, string author, long id, string publisher, int publishingYear)
+        public List<Books> Post(Books book)
         {
-            MockingBooks.Books.Add(new Books { Id = id, Name = name, Author = author, Publisher = publisher, PublishingYear = publishingYear });
+            MockingBooks.Books.Add(book);
             return _mapper.Map<List<Books>>(MockingBooks.Books);
         }
 

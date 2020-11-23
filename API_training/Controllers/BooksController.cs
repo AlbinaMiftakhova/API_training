@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using API_training.Models.DTO;
 using API_training.Services.Interfaces;
 using API_training.Common;
+using API_training.Database.Domain;
 
 namespace API_training.Controllers
 {
@@ -61,18 +62,14 @@ namespace API_training.Controllers
         /// <summary>
         /// Добавляет книгу в список доступных книг
         /// </summary>
-        /// <param name="name">Название книги</param>
-        /// <param name="author">Автор книги</param>
-        /// <param name="id">Идентификатор книги</param>
-        /// <param name="publisher">Издательство</param>
-        /// <param name="publishingYear">Год издания</param>
+        /// <param book="book">Экземпляр книги</param>
         /// <returns>Новый список доступных книг</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Post(string name, string author, long id, string publisher, int publishingYear)
+        public IActionResult Post([FromBody] Books book)
         {
             _logger.LogInformation("Books/Post was requested.");
-            var response = _booksService.Post(name, author, id, publisher, publishingYear);
+            var response = _booksService.Post(book);
             return Ok(response);
         }
 
