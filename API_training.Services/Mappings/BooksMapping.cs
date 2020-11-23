@@ -5,7 +5,7 @@ using AutoMapper;
 namespace API_training.Services.Mappings
 {
     /// <summary>
-    /// Профиль маппинга (книги).
+    /// Профиль маппинга (книги)
     /// </summary>
     class BooksMapping : Profile
     {
