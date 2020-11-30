@@ -1,13 +1,11 @@
-﻿using API_training.Database.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-
-namespace API_training.Models.DTO
+namespace API_training.Models.Requests.Books
 {
     /// <summary>
-    /// DTO для <see cref="Books"/>
+    /// Запрос на создание книги
     /// </summary>
-    public class DTOBooks : BaseDto
+    public class CreateBooksRequest
     {
         /// <summary>
         /// Идентификатор книги
@@ -20,7 +18,7 @@ namespace API_training.Models.DTO
         /// </summary>
         [Required]
         public string Author { get; set; }
-        
+
         /// <summary>
         /// Название книги
         /// </summary>
