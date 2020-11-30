@@ -1,6 +1,7 @@
 using System.Reflection;
 using API_training.Common;
-using API_training.Services.Bootstraps;
+using API_training.DAL.Bootstrap;
+using API_training.Services.Bootstrap;
 using API_training.Services.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,7 @@ namespace API_training
         /// <param name="services">Коллекция сервисов</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureDb(Configuration);
             services.AddControllers();
             services.ConfigureServices();
             services.AddAutoMapper(typeof(BooksService).GetTypeInfo().Assembly);
