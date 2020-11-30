@@ -5,7 +5,10 @@ using Microsoft.Extensions.Logging;
 using API_training.Models.DTO;
 using API_training.Services.Interfaces;
 using API_training.Common;
-using API_training.Database.Domain;
+using System.Threading;
+using System.Threading.Tasks;
+using API_training.Models.Requests.Books;
+using AutoMapper;
 
 namespace API_training.Controllers
 {
@@ -18,14 +21,15 @@ namespace API_training.Controllers
     public class BooksController : ControllerBase
     {
         private readonly ILogger<BooksController> _logger;
-        private readonly IBooksInterface _booksService;
+        private readonly IBooksService _booksService;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="BooksController"/>
         /// </summary>
         /// <param name="booksService">Сервис книг</param>
         /// <param name="logger">Логгер</param>
-        public BooksController(IBooksInterface booksService, ILogger<BooksController> logger)
+        public BooksController(IBooksService booksService, ILogger<BooksController> logger)
         {
             _booksService = booksService;
             _logger = logger;
@@ -37,10 +41,10 @@ namespace API_training.Controllers
         /// <returns>Коллекция сущностей "Книги"</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Books/Get was requested.");
-            var response = _booksService.Get();
+            var response = await _booksService.GetAsync(cancellationToken);
             return Ok(response);
         }
 
@@ -52,10 +56,10 @@ namespace API_training.Controllers
         [HttpGet]
         [Route("{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult GetById(long id)
+        public async Task<IActionResult> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Books/Get by id was requested.");
-            var response = _booksService.GetById(id);
+            var response = await _booksService.GetAsync(id, cancellationToken);
             return Ok(response);
         }
 
@@ -66,10 +70,10 @@ namespace API_training.Controllers
         /// <returns>Новый список доступных книг</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Post([FromBody] Books book)
+        public async Task<IActionResult> PostAsync(CreateBooksRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Books/Post was requested.");
-            var response = _booksService.Post(book);
+            var response = await _booksService.CreateAsync(_mapper.Map<DTOBooks>(request));
             return Ok(response);
         }
 
@@ -81,11 +85,12 @@ namespace API_training.Controllers
         [HttpDelete]
         [Route("{id:long}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> DeleteAsync(CancellationToken cancellationToken, params long[] ids)
         {
+
             _logger.LogInformation("Books/Delete was requested.");
-            var response = _booksService.Delete(id);
-            return Ok(response);
+            await _booksService.DeleteAsync(ids);
+            return Ok();
         }
 
         /// <summary>
@@ -94,10 +99,10 @@ namespace API_training.Controllers
         /// <returns>Возвращает отсортированный список сущностей "Книги"</returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<DTOBooks>))]
-        public IActionResult Put()
+        public async Task<IActionResult> PutAsync(UpdateBooksRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Books/Put was requested.");
-            var response = _booksService.SortByName();
+            var response = _booksService.UpdateAsync(_mapper.Map<DTOBooks>(request));
             return Ok(response);
         }
     }

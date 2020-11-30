@@ -30,49 +30,55 @@
             Контроллер для работы с данными о книгах
             </summary>
         </member>
-        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Services.Interfaces.IBooksInterface,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController})">
+        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Services.Interfaces.IBooksService,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController})">
             <summary>
             Инициализирует экземпляр <see cref="T:API_training.Controllers.BooksController"/>
             </summary>
             <param name="booksService">Сервис книг</param>
             <param name="logger">Логгер</param>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Get">
+        <member name="M:API_training.Controllers.BooksController.GetAsync(System.Threading.CancellationToken)">
             <summary>
             Получение перечня доступных книг
             </summary>
             <returns>Коллекция сущностей "Книги"</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.GetById(System.Int64)">
+        <member name="M:API_training.Controllers.BooksController.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
             <summary>
             Получение книги по идентификатору
             </summary>
             <param name="id">Идентификатор книги</param>
             <returns>Сущность "Книга"</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Post(System.String,System.String,System.Int64,System.String,System.Int32)">
+        <member name="M:API_training.Controllers.BooksController.PostAsync(API_training.Models.Requests.Books.CreateBooksRequest,System.Threading.CancellationToken)">
             <summary>
             Добавляет книгу в список доступных книг
             </summary>
-            <param name="name">Название книги</param>
-            <param name="author">Автор книги</param>
-            <param name="id">Идентификатор книги</param>
-            <param name="publisher">Издательство</param>
-            <param name="publishingYear">Год издания</param>
+            <param book="book">Экземпляр книги</param>
             <returns>Новый список доступных книг</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Delete(System.Int64)">
+        <member name="M:API_training.Controllers.BooksController.DeleteAsync(System.Threading.CancellationToken,System.Int64[])">
             <summary>
             Удаляет сущность "Книги" с заданным идентификатором
             </summary>
             <param name="id">Идентификатор книги</param>
             <returns>Новый список доступных книг</returns>
         </member>
-        <member name="M:API_training.Controllers.BooksController.Put">
+        <member name="M:API_training.Controllers.BooksController.PutAsync(API_training.Models.Requests.Books.UpdateBooksRequest,System.Threading.CancellationToken)">
             <summary>
             Сортирует список сущностей "Книги" по названию
             </summary>
             <returns>Возвращает отсортированный список сущностей "Книги"</returns>
+        </member>
+        <member name="T:API_training.Controllers.Mappings.BooksProfile">
+            <summary>
+            Маппинг для запросов и ответов контроллера сущности Книги
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.Mappings.BooksProfile.#ctor">
+            <summary>
+            Инициализирует экземпляр <see cref="T:API_training.Controllers.Mappings.BooksProfile"/>
+            </summary>
         </member>
         <member name="T:API_training.Startup">
             <summary>

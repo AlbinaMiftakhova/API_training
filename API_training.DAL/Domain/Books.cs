@@ -1,13 +1,12 @@
-﻿using API_training.Database.Domain;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-
-namespace API_training.Models.DTO
+namespace API_training.DAL.Domain
 {
     /// <summary>
-    /// DTO для <see cref="Books"/>
+    /// Одежда.
     /// </summary>
-    public class DTOBooks : BaseDto
+    public class Books : BaseEntity
     {
         /// <summary>
         /// Идентификатор книги
@@ -20,7 +19,7 @@ namespace API_training.Models.DTO
         /// </summary>
         [Required]
         public string Author { get; set; }
-        
+
         /// <summary>
         /// Название книги
         /// </summary>
@@ -28,14 +27,18 @@ namespace API_training.Models.DTO
         public string Name { get; set; }
 
         /// <summary>
-        /// Издательство
+        /// Издатель книги
         /// </summary>
         public string Publisher { get; set; }
 
         /// <summary>
-        /// Год издания
+        /// Год издания книги
         /// </summary>
-        [MaxLength(4)]
         public int PublishingYear { get; set; }
+
+        /// <summary>
+        /// Наличие книги в библиотеке
+        /// </summary>
+        public ICollection<Available> WhereIsAvailable { get; set; }
     }
 }
