@@ -13,7 +13,7 @@ using API_training.DAL.Contexts;
 namespace API_training.Repositories
 {
     /// <summary>
-    /// Базовый класс репозитория для работы с CRUD]
+    /// Базовый класс репозитория для работы с CRUD
     /// </summary>
     /// <typeparam name="TDto">DTO</typeparam>
     /// <typeparam name="TModel">Доменная модель</typeparam>
