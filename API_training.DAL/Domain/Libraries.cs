@@ -31,6 +31,6 @@ namespace API_training.DAL.Domain
         /// <summary>
         /// Наличие книг в библиотеке.
         /// </summary>
-        public ICollection<Available> WhatIsAvailable { get; set; }
+        public ICollection<Available> Availability { get; set; }
     }
 }

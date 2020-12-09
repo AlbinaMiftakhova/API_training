@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training", "API_training\API_training.csproj", "{0D8D021E-F205-47B3-BBD1-9A705A42F3CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training.Database", "API_training.Database\API_training.Database.csproj", "{60065EC1-BE9D-49D4-9F0C-2715B2E70AE5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training.Models", "API_training.Models\API_training.Models.csproj", "{A03307E1-E8F7-4DE3-B2D5-BFA84598108A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training.Services", "API_training.Services\API_training.Services.csproj", "{9517397C-00DD-456B-AF20-1564FCD5A885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_training.DAL", "API_training.DAL\API_training.DAL.csproj", "{7C5E5612-BC90-4504-820F-CA750BD87EFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training.DAL", "API_training.DAL\API_training.DAL.csproj", "{7C5E5612-BC90-4504-820F-CA750BD87EFD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_training.Repositories", "API_training.Repositories\API_training.Repositories.csproj", "{84A16C1B-72B1-4994-A0D4-F1781DF55B66}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{0D8D021E-F205-47B3-BBD1-9A705A42F3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D8D021E-F205-47B3-BBD1-9A705A42F3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D8D021E-F205-47B3-BBD1-9A705A42F3CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60065EC1-BE9D-49D4-9F0C-2715B2E70AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60065EC1-BE9D-49D4-9F0C-2715B2E70AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60065EC1-BE9D-49D4-9F0C-2715B2E70AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60065EC1-BE9D-49D4-9F0C-2715B2E70AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A03307E1-E8F7-4DE3-B2D5-BFA84598108A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A03307E1-E8F7-4DE3-B2D5-BFA84598108A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A03307E1-E8F7-4DE3-B2D5-BFA84598108A}.Release|Any CPU.ActiveCfg = Release|Any CPU
