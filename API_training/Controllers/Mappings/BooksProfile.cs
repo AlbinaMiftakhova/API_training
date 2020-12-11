@@ -18,7 +18,9 @@ namespace API_training.Controllers.Mappings
         {
             CreateMap<CreateBooksRequest, BookDTO>();
             CreateMap<UpdateBooksRequest, BookDTO>();
-            CreateMap<BookDTO, BooksResponse>();
+            CreateMap<BookDTO, BooksResponse>()
+               .ForMember(x => x.GenreName, y => y.MapFrom(src => src.Genre.Name));
         }
     }
+    
 }

@@ -29,5 +29,10 @@
         /// Год издания
         /// </summary>
         public int PublishingYear { get; set; }
+
+        /// <summary>
+        /// Наименование жанра
+        /// </summary>
+        public string GenreName { get; set; }
     }
 }
