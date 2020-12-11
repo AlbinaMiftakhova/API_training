@@ -3,6 +3,8 @@ using API_training.DAL.Domain;
 using API_training.Models.DTO;
 using API_training.Repositories.Interfaces;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace API_training.Repositories
 {
@@ -18,6 +20,12 @@ namespace API_training.Repositories
         /// <param name="mapper">Маппер</param>
         public BooksRepository(ApiTrainingContext context, IMapper mapper) : base (context, mapper)
         {
+        }
+
+        /// <inheritdoc/>
+        protected override IQueryable<Books> DefaultIncludeProperties(DbSet<Books> dbSet)
+        {
+            return _dbSet.Include(x => x.Genre);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace API_training.DAL.Domain
     public class Libraries : BaseEntity
     {
         /// <summary>
-        /// Идентификатор записи.
+        /// Идентификатор записи
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,18 +24,22 @@ namespace API_training.DAL.Domain
         public string Address { get; set; }
 
         /// <summary>
-        /// Телефон библиотеки.
+        /// Телефон библиотеки
         /// </summary>
         [StringLength(25)]
         [Required]
         public string Phone { get; set; }
 
         /// <summary>
-        /// Сайт библиотеки.
+        /// Сайт библиотеки
         /// </summary>
         [StringLength(25)]
         [Required]
         public string Website { get; set; }
 
+        /// <summary>
+        /// Наличие книг в данной библиотеке
+        /// </summary>
+        public ICollection<Available> Availabilities { get; set; }
     }
 }
