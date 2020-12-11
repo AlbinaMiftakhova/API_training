@@ -32,5 +32,20 @@ namespace API_training.DAL.Domain
         [Required]
         public int PublishingYear { get; set; }
 
+        /// <summary>
+        /// Жанр книги
+        /// </summary>
+        public Genre Genre { get; set; }
+
+        /// <summary>
+        /// Идентификатор жанра книги
+        /// </summary>
+        public long GenreId { get; set; }
+
+        /// <summary>
+        /// Наличие данной книги в библиотеках
+        /// </summary>
+        public ICollection<Available> Availabilities { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using API_training.Database.Domain;
+﻿using API_training.DAL.Domain;
+using API_training.Database.Domain;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -28,5 +29,10 @@ namespace API_training.Models.DTO
         /// Год издания
         /// </summary>
         public int PublishingYear { get; set; }
+
+        /// <summary>
+        /// Провайдер.
+        /// </summary>
+        public GenreDTO Genre { get; set; }
     }
 }
