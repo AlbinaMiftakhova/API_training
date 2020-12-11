@@ -7,7 +7,7 @@ namespace API_training.Repositories.Interfaces
     /// <summary>
     /// Интерфейс репозитория для работы с сущностями "Книги"
     /// </summary>
-    public interface IBooksRepository : ICrudRepository<DTOBooks, Books>
+    public interface IBooksRepository : ICrudRepository<BookDTO, Books>
     {
     }
 }

@@ -14,7 +14,7 @@ namespace API_training.Repositories.Mappings
         /// </summary>
         public BooksProfile()
         {
-            CreateMap<Books, DTOBooks>().ReverseMap();
+            CreateMap<Books, BookDTO>().ReverseMap();
         }
     }
 }

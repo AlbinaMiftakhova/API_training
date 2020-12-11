@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace API_training.Services.Bootstrap
 {
     /// <summary>
-    /// Методы засширения для конфигурации сервисов
+    /// Методы расширения для конфигурации сервисов
     /// </summary>
     public static class ServicesConfiguration
     {
