@@ -27,11 +27,7 @@ namespace API_training.DAL.Contexts
         /// Инициализирует экземпляр <see cref="ApiTrainingContext"/>
         /// </summary>
         /// <param name="options">Опции для конфигурации контекста</param>
-        public ApiTrainingContext(DbContextOptions options) : base(options) 
-        {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
-        }
+        public ApiTrainingContext(DbContextOptions options) : base(options) { }
 
     }
 }

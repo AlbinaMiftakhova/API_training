@@ -2,9 +2,9 @@
 namespace API_training.Services.Interfaces
 {
     /// <summary>
-    /// Интерфейс сервиса для работы с данными об одежде.
+    /// Интерфейс сервиса для работы с данными об книгах
     /// </summary>
-    public interface IBooksService : ICrudService<DTOBooks>
+    public interface IBooksService : ICrudService<BookDTO>
     {
     }
 }

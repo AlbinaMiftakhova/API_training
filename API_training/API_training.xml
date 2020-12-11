@@ -30,12 +30,13 @@
             Контроллер для работы с данными о книгах
             </summary>
         </member>
-        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Services.Interfaces.IBooksService,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController})">
+        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Services.Interfaces.IBooksService,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController},AutoMapper.IMapper)">
             <summary>
             Инициализирует экземпляр <see cref="T:API_training.Controllers.BooksController"/>
             </summary>
             <param name="booksService">Сервис книг</param>
             <param name="logger">Логгер</param>
+            <param name="mapper">Маппер</param>
         </member>
         <member name="M:API_training.Controllers.BooksController.GetAsync(System.Threading.CancellationToken)">
             <summary>
@@ -61,7 +62,7 @@
             <summary>
             Удаляет сущность "Книги" с заданным идентификатором
             </summary>
-            <param name="id">Идентификатор книги</param>
+            <param name="ids">Идентификаторы книг</param>
             <returns>Новый список доступных книг</returns>
         </member>
         <member name="M:API_training.Controllers.BooksController.PutAsync(API_training.Models.Requests.Books.UpdateBooksRequest,System.Threading.CancellationToken)">

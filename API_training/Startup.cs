@@ -1,6 +1,9 @@
 using System.Reflection;
 using API_training.Common;
+using API_training.Controllers;
 using API_training.DAL.Bootstrap;
+using API_training.Repositories;
+using API_training.Repositories.Bootstrap;
 using API_training.Services.Bootstrap;
 using API_training.Services.Services;
 using AutoMapper;
@@ -38,9 +41,13 @@ namespace API_training
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureDb(Configuration);
+            services.ConfigureRepositories();
             services.AddControllers();
             services.ConfigureServices();
-            services.AddAutoMapper(typeof(BooksService).GetTypeInfo().Assembly);
+            services.AddAutoMapper(
+                typeof(BooksRepository).GetTypeInfo().Assembly, 
+                typeof(BooksController).GetTypeInfo().Assembly
+            );
             services.ConfigureSwagger();
         }
 

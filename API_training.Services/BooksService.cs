@@ -15,7 +15,7 @@ namespace API_training.Services.Services
         private readonly IBooksRepository _repository;
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="DressService"/>
+        /// Инициализирует экземпляр <see cref=BooksService"/>
         /// </summary>
         /// <param name="repository">Репозиторий</param>
         public BooksService(IBooksRepository repository)
@@ -24,7 +24,7 @@ namespace API_training.Services.Services
         }
 
         ///<inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
-        public async Task<DTOBooks> CreateAsync(DTOBooks dto)
+        public async Task<BookDTO> CreateAsync(BookDTO dto)
         {
             return await _repository.CreateAsync(dto);
         }
@@ -36,19 +36,19 @@ namespace API_training.Services.Services
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
-        public async Task<DTOBooks> GetAsync(long id, CancellationToken token = default)
+        public async Task<BookDTO> GetAsync(long id, CancellationToken token = default)
         {
             return await _repository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<DTOBooks>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<BookDTO>> GetAsync(CancellationToken token = default)
         {
             return await _repository.GetAsync();
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
-        public async Task<DTOBooks> UpdateAsync(DTOBooks dto)
+        public async Task<BookDTO> UpdateAsync(BookDTO dto)
         {
             return await _repository.UpdateAsync(dto);
         }
