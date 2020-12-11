@@ -16,6 +16,7 @@ namespace API_training.DAL.Fluent
         public void Configure(EntityTypeBuilder<Available> builder)
         {
             builder.BaseEntityWithLinksConfig<Available, Books, Libraries>(
+                e => e.Availabilities,
                 e => e.Availabilities);
 
             builder.Property(x => x.Count)

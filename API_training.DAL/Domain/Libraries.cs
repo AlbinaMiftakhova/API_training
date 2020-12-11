@@ -9,12 +9,6 @@ namespace API_training.DAL.Domain
     /// </summary>
     public class Libraries : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
 
         /// <summary>
         /// Адрес библиотеки

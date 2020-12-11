@@ -5,7 +5,9 @@ using System.Text;
 
 namespace API_training.DAL.Domain
 {
-
+    /// <summary>
+    /// Жанр книги
+    /// </summary>
     public class GenreDTO { 
 
         /// <summary>

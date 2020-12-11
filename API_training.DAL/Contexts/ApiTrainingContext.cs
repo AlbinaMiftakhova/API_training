@@ -30,8 +30,8 @@ namespace API_training.DAL.Contexts
         /// <param name="options">Опции для конфигурации контекста</param>
         public ApiTrainingContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace API_training.DAL.Contexts
             var builder = new DbContextOptionsBuilder<ApiTrainingContext>()
                    .UseNpgsql(connectionString, __options =>
                    {
-                       __options.MigrationsAssembly("API_training");
+                       __options.MigrationsAssembly(typeof(ApiTrainingContext).Assembly.FullName);
                    });
 
             var context = new ApiTrainingContext(builder.Options);
