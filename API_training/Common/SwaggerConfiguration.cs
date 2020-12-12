@@ -20,6 +20,13 @@ namespace API_training.Common
                 c.ApiGroupNames = new[] { DocumentPartsConst.Books };
                 c.GenerateXmlObjects = true;
             });
+            services.AddSwaggerDocument(c =>
+            {
+                c.Title = "Genre";
+                c.DocumentName = DocumentPartsConst.Genre;
+                c.ApiGroupNames = new[] { DocumentPartsConst.Genre };
+                c.GenerateXmlObjects = true;
+            });
         }
     }
 }

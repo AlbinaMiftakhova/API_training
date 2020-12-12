@@ -24,6 +24,12 @@ namespace API_training.DAL.Contexts
         /// </summary>
         public DbSet<Available> Availables { get; set; }
 
+
+        /// <summary>
+        /// Наличие в библиотеке
+        /// </summary>
+        public DbSet<Genre> Genres { get; set; }
+
         /// <summary>
         /// Инициализирует экземпляр <see cref="ApiTrainingContext"/>
         /// </summary>

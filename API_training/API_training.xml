@@ -14,6 +14,11 @@
             Константа для swagger-документа "Книги"
             </summary>
         </member>
+        <member name="F:API_training.Common.DocumentPartsConst.Genre">
+            <summary>
+            Константа для swagger-документа "Жанры"
+            </summary>
+        </member>
         <member name="T:API_training.Common.SwaggerConfiguration">
             <summary>
             Расширения для конфигурации Swagger
@@ -30,11 +35,11 @@
             Контроллер для работы с данными о книгах
             </summary>
         </member>
-        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Services.Interfaces.IBooksService,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController},AutoMapper.IMapper)">
+        <member name="M:API_training.Controllers.BooksController.#ctor(API_training.Repositories.IUnitOfWork,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.BooksController},AutoMapper.IMapper,API_training.Services.Interfaces.IBooksService)">
             <summary>
             Инициализирует экземпляр <see cref="T:API_training.Controllers.BooksController"/>
             </summary>
-            <param name="booksService">Сервис книг</param>
+            <param name="repo">Репозиторий</param>
             <param name="logger">Логгер</param>
             <param name="mapper">Маппер</param>
         </member>
@@ -56,7 +61,7 @@
             Добавляет книгу в список доступных книг
             </summary>
             <param book="book">Экземпляр книги</param>
-            <returns>Новый список доступных книг</returns>
+            <returns>Возвращает экземпляр добавленной книги</returns>
         </member>
         <member name="M:API_training.Controllers.BooksController.DeleteAsync(System.Threading.CancellationToken,System.Int64[])">
             <summary>
@@ -67,9 +72,54 @@
         </member>
         <member name="M:API_training.Controllers.BooksController.PutAsync(API_training.Models.Requests.Books.UpdateBooksRequest,System.Threading.CancellationToken)">
             <summary>
-            Сортирует список сущностей "Книги" по названию
+            Изменение сущности Книги
             </summary>
-            <returns>Возвращает отсортированный список сущностей "Книги"</returns>
+            <returns>Возвращает измененную сущность</returns>
+        </member>
+        <member name="T:API_training.Controllers.GenresController">
+            <summary>
+            Контроллер для работы с данными о книгах
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.#ctor(API_training.Repositories.UnitOfWork,Microsoft.Extensions.Logging.ILogger{API_training.Controllers.GenresController},AutoMapper.IMapper)">
+            <summary>
+            Инициализирует экземпляр <see cref="T:API_training.Controllers.GenresController"/>
+            </summary>
+            <param name="repo">Репозиторий</param>
+            <param name="logger">Логгер</param>
+            <param name="mapper">Маппер</param>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.GetAsync(System.Threading.CancellationToken)">
+            <summary>
+            Получение перечня жанров
+            </summary>
+            <returns>Коллекция сущностей "Жанры"</returns>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.GetByIdAsync(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Получение жанра по идентификатору
+            </summary>
+            <param name="id">Идентификатор жанра</param>
+            <returns>Сущность "Жанр"</returns>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.PostAsync(API_training.Models.Requests.Genres.CreateGenresRequest,System.Threading.CancellationToken)">
+            <summary>
+            Добавляет жанр
+            </summary>
+            <returns>Новый список жанров</returns>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.DeleteAsync(System.Threading.CancellationToken,System.Int64[])">
+            <summary>
+            Удаляет жанр
+            </summary>
+            <param name="ids">Идентификаторы жанров</param>
+            <returns>Новый список жанров</returns>
+        </member>
+        <member name="M:API_training.Controllers.GenresController.PutAsync(API_training.Models.Requests.Genres.UpdateGenresRequest,System.Threading.CancellationToken)">
+            <summary>
+            Изменяет сущность "Жанр"
+            </summary>
+            <returns>Возвращает изменненную запись</returns>
         </member>
         <member name="T:API_training.Controllers.Mappings.BooksProfile">
             <summary>
@@ -79,6 +129,16 @@
         <member name="M:API_training.Controllers.Mappings.BooksProfile.#ctor">
             <summary>
             Инициализирует экземпляр <see cref="T:API_training.Controllers.Mappings.BooksProfile"/>
+            </summary>
+        </member>
+        <member name="T:API_training.Controllers.Mappings.GenresProfile">
+            <summary>
+            Маппинг для запросов и ответов контроллера сущности Жанры
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.Mappings.GenresProfile.#ctor">
+            <summary>
+            Инициализирует экземпляр <see cref="T:API_training.Controllers.Mappings.GenresProfile"/>
             </summary>
         </member>
         <member name="T:API_training.Startup">

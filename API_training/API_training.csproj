@@ -10,7 +10,12 @@
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\albin\source\repos\API_training\API_training\API_training.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <None Remove="API_training.xml" />
     <None Remove="README.txt" />
   </ItemGroup>
 
