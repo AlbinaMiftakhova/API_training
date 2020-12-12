@@ -1,4 +1,5 @@
-﻿using API_training.Services.Interfaces;
+﻿using API_training.Repositories;
+using API_training.Services.Interfaces;
 using API_training.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,8 @@ namespace API_training.Services.Bootstrap
         public static void ConfigureServices(this IServiceCollection services)
         {            
             services.AddTransient<IBooksService, BooksService>();
+            services.AddTransient<IGenresService, GenresService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
 }
