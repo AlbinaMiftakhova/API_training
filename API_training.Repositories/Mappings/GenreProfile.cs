@@ -5,7 +5,7 @@ using AutoMapper;
 namespace API_training.Repositories.Mappings
 {
     /// <summary>
-    /// Маппинг для <see cref="Provider"/>.
+    /// Маппинг для <see cref="Genre"/>.
     /// </summary>
     public class GenreProfile : Profile
     {

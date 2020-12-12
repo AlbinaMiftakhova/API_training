@@ -1,14 +1,15 @@
-﻿using System;
+﻿using API_training.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace API_training.DAL.Domain
+namespace API_training.Models.DTO
 {
     /// <summary>
     /// Жанр книги
     /// </summary>
-    public class GenreDTO { 
+    public class GenreDTO : BaseDto { 
 
         /// <summary>
         /// Наименование жанра книги
