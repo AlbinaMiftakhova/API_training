@@ -20,7 +20,6 @@ namespace API_training
     /// </summary>
     public class Startup
     {
-        private string _connection = null;
         
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
@@ -42,11 +41,7 @@ namespace API_training
         /// <param name="services">Коллекция сервисов</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var builder = new SqlConnectionStringBuilder(
-           Configuration.GetConnectionString("ApiTrainingContext"));
-            builder.Password = Configuration["Password"];
-            _connection = builder.ConnectionString;
-            services.ConfigureDb(Configuration, _connection);
+            services.ConfigureDb(Configuration);
             services.ConfigureRepositories();
             services.AddControllers();
             services.ConfigureServices();
