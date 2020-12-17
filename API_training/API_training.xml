@@ -150,7 +150,7 @@
             <summary>
             Инициализирует новый экземпляр класса <see cref="T:API_training.Startup"/>.
             </summary>
-            <param name="configuration">Конфигурация</param>
+            <param name="configuration">Конфигурация</param>         
         </member>
         <member name="P:API_training.Startup.Configuration">
             <summary>
