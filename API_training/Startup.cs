@@ -1,8 +1,11 @@
+using System.Data.SqlClient;
 using System.Reflection;
 using API_training.Common;
+using API_training.Controllers;
 using API_training.DAL.Bootstrap;
+using API_training.Repositories;
+using API_training.Repositories.Bootstrap;
 using API_training.Services.Bootstrap;
-using API_training.Services.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,10 +20,11 @@ namespace API_training
     /// </summary>
     public class Startup
     {
+        
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
-        /// <param name="configuration">Конфигурация</param>
+        /// <param name="configuration">Конфигурация</param>         
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,9 +42,13 @@ namespace API_training
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureDb(Configuration);
+            services.ConfigureRepositories();
             services.AddControllers();
             services.ConfigureServices();
-            services.AddAutoMapper(typeof(BooksService).GetTypeInfo().Assembly);
+            services.AddAutoMapper(
+                typeof(BooksRepository).GetTypeInfo().Assembly, 
+                typeof(BooksController).GetTypeInfo().Assembly
+            );
             services.ConfigureSwagger();
         }
 

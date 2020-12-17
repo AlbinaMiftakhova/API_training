@@ -2,6 +2,7 @@
 using API_training.Models.Requests.Books;
 using API_training.Models.Responses.Books;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace API_training.Controllers.Mappings
 {
@@ -15,9 +16,11 @@ namespace API_training.Controllers.Mappings
         /// </summary>
         public BooksProfile()
         {
-            CreateMap<CreateBooksRequest, DTOBooks>();
-            CreateMap<UpdateBooksRequest, DTOBooks>();
-            CreateMap<DTOBooks, BooksResponse>();
+            CreateMap<CreateBooksRequest, BookDTO>();
+            CreateMap<UpdateBooksRequest, BookDTO>();
+            CreateMap<BookDTO, BooksResponse>()
+               .ForMember(x => x.GenreName, y => y.MapFrom(src => src.Genre.Name));
         }
     }
+    
 }

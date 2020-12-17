@@ -8,12 +8,6 @@ namespace API_training.Models.Requests.Books
     public class CreateBooksRequest
     {
         /// <summary>
-        /// Идентификатор книги
-        /// </summary>
-        [Required]
-        public long Id { get; set; }
-
-        /// <summary>
         /// Автор книги
         /// </summary>
         [Required]
@@ -28,12 +22,13 @@ namespace API_training.Models.Requests.Books
         /// <summary>
         /// Издательство
         /// </summary>
+        [Required]
         public string Publisher { get; set; }
 
         /// <summary>
         /// Год издания
         /// </summary>
-        [MaxLength(4)]
+        [Required]
         public int PublishingYear { get; set; }
     }
 }

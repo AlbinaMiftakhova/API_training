@@ -5,9 +5,9 @@ using API_training.Repositories.Interfaces.CRUD;
 namespace API_training.Repositories.Interfaces
 {
     /// <summary>
-    /// Интерфейс репозитория для работы с сущностями "Книги"
+    /// Интерфейс репозитория для работы с сущностями "Жанры"
     /// </summary>
-    public interface IBooksRepository : ICrudRepository<BookDTO, Books>
+    public interface IGenresRepository : ICrudRepository<GenreDTO, Genre>
     {
     }
 }

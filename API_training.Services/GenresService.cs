@@ -10,21 +10,21 @@ namespace API_training.Services.Services
     /// <summary>
     /// Сервис для работы с данными о книгах
     /// </summary>
-    public class BooksService : IBooksService
+    public class GenresService : IGenresService
     {
-        private readonly IBooksRepository _repository;
+        private readonly IGenresRepository _repository;
 
         /// <summary>
         /// Инициализирует экземпляр <see cref=BooksService"/>
         /// </summary>
         /// <param name="repository">Репозиторий</param>
-        public BooksService(IBooksRepository repository)
+        public GenresService(IGenresRepository repository)
         {
             _repository = repository;
         }
 
         ///<inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
-        public async Task<BookDTO> CreateAsync(BookDTO dto)
+        public async Task<GenreDTO> CreateAsync(GenreDTO dto)
         {
             return await _repository.CreateAsync(dto);
         }
@@ -36,19 +36,19 @@ namespace API_training.Services.Services
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
-        public async Task<BookDTO> GetAsync(long id, CancellationToken token = default)
+        public async Task<GenreDTO> GetAsync(long id, CancellationToken token = default)
         {
             return await _repository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<BookDTO>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<GenreDTO>> GetAsync(CancellationToken token = default)
         {
             return await _repository.GetAsync();
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
-        public async Task<BookDTO> UpdateAsync(BookDTO dto)
+        public async Task<GenreDTO> UpdateAsync(GenreDTO dto)
         {
             return await _repository.UpdateAsync(dto);
         }

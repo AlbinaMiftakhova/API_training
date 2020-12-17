@@ -4,7 +4,7 @@ namespace API_training.Services.Interfaces
     /// <summary>
     /// Интерфейс сервиса для работы с данными об книгах
     /// </summary>
-    public interface IBooksService : ICrudService<BookDTO>
+    public interface IGenresService : ICrudService<GenreDTO>
     {
     }
 }

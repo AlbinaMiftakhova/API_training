@@ -1,4 +1,5 @@
-﻿using API_training.Database.Domain;
+﻿using API_training.DAL.Domain;
+using API_training.Database.Domain;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -7,24 +8,16 @@ namespace API_training.Models.DTO
     /// <summary>
     /// DTO для <see cref="Books"/>
     /// </summary>
-    public class DTOBooks : BaseDto
+    public class BookDTO : BaseDto
     {
-        /// <summary>
-        /// Идентификатор книги
-        /// </summary>
-        [Required]
-        public long Id { get; set; }
-
         /// <summary>
         /// Автор книги
         /// </summary>
-        [Required]
         public string Author { get; set; }
         
         /// <summary>
         /// Название книги
         /// </summary>
-        [Required]
         public string Name { get; set; }
 
         /// <summary>
@@ -35,7 +28,11 @@ namespace API_training.Models.DTO
         /// <summary>
         /// Год издания
         /// </summary>
-        [MaxLength(4)]
         public int PublishingYear { get; set; }
+
+        /// <summary>
+        /// Провайдер.
+        /// </summary>
+        public GenreDTO Genre { get; set; }
     }
 }

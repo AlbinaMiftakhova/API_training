@@ -9,12 +9,6 @@ namespace API_training.DAL.Domain
     public class Books : BaseEntity
     {
         /// <summary>
-        /// Идентификатор книги
-        /// </summary>
-        [Required]
-        public long Id { get; set; }
-
-        /// <summary>
         /// Автор книги
         /// </summary>
         [Required]
@@ -29,16 +23,29 @@ namespace API_training.DAL.Domain
         /// <summary>
         /// Издатель книги
         /// </summary>
+        [Required]
         public string Publisher { get; set; }
 
         /// <summary>
         /// Год издания книги
         /// </summary>
+        [Required]
         public int PublishingYear { get; set; }
 
         /// <summary>
-        /// Наличие книги в библиотеке
+        /// Жанр книги
         /// </summary>
-        public ICollection<Available> WhereIsAvailable { get; set; }
+        public Genre Genre { get; set; }
+
+        /// <summary>
+        /// Идентификатор жанра книги
+        /// </summary>
+        public long GenreId { get; set; }
+
+        /// <summary>
+        /// Наличие данной книги в библиотеках
+        /// </summary>
+        public ICollection<Available> Availabilities { get; set; }
+
     }
 }

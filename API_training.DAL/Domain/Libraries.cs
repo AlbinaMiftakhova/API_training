@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_training.DAL.Domain
 {
@@ -8,29 +9,31 @@ namespace API_training.DAL.Domain
     /// </summary>
     public class Libraries : BaseEntity
     {
+
         /// <summary>
         /// Адрес библиотеки
         /// </summary>
+        [StringLength(25)]
         [Required]
         public string Address { get; set; }
 
         /// <summary>
-        /// Телефон библиотеки.
+        /// Телефон библиотеки
         /// </summary>
         [StringLength(25)]
         [Required]
         public string Phone { get; set; }
 
         /// <summary>
-        /// Сайт библиотеки.
+        /// Сайт библиотеки
         /// </summary>
         [StringLength(25)]
         [Required]
         public string Website { get; set; }
 
         /// <summary>
-        /// Наличие книг в библиотеке.
+        /// Наличие книг в данной библиотеке
         /// </summary>
-        public ICollection<Available> WhatIsAvailable { get; set; }
+        public ICollection<Available> Availabilities { get; set; }
     }
 }

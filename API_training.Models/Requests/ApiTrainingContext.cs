@@ -1,5 +1,4 @@
 ﻿using API_training.DAL.Domain;
-using API_training.DAL.Fluent;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_training.DAL.Contexts
@@ -24,30 +23,11 @@ namespace API_training.DAL.Contexts
         /// </summary>
         public DbSet<Available> Availables { get; set; }
 
-
-        /// <summary>
-        /// Наличие в библиотеке
-        /// </summary>
-        public DbSet<Genre> Genres { get; set; }
-
         /// <summary>
         /// Инициализирует экземпляр <see cref="ApiTrainingContext"/>
         /// </summary>
         /// <param name="options">Опции для конфигурации контекста</param>
-        public ApiTrainingContext(DbContextOptions options) : base(options)
-        {
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
-        }
+        public ApiTrainingContext(DbContextOptions options) : base(options) { }
 
-        /// <summary>
-        /// Правила создания сущностей.
-        /// </summary>
-        /// <param name="builder">Билдер моделей.</param>
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfiguration(new AvailabilityConfig());
-
-        }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\API_training.Database\API_training.Database.csproj" />
+    <ProjectReference Include="..\API_training.Repositories\API_training.Repositories.csproj" />
     <ProjectReference Include="..\API_training.Models\API_training.Models.csproj" />
   </ItemGroup>
 

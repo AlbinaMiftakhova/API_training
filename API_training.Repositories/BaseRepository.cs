@@ -13,7 +13,7 @@ using API_training.DAL.Contexts;
 namespace API_training.Repositories
 {
     /// <summary>
-    /// Базовый класс репозитория для работы с CRUD]
+    /// Базовый класс репозитория для работы с CRUD
     /// </summary>
     /// <typeparam name="TDto">DTO</typeparam>
     /// <typeparam name="TModel">Доменная модель</typeparam>
@@ -23,7 +23,7 @@ namespace API_training.Repositories
     {
         private readonly IMapper _mapper;
         protected readonly ApiTrainingContext _сontext;
-        protected DbSet<TModel> DbSet => _сontext.Set<TModel>();
+        protected DbSet<TModel> _dbSet => _сontext.Set<TModel>();
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="BaseRepository{TDto, TModel}"/>.
@@ -40,7 +40,7 @@ namespace API_training.Repositories
         public async Task<TDto> CreateAsync(TDto dto)
         {
             var entity = _mapper.Map<TModel>(dto);
-            await DbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity);
             await _сontext.SaveChangesAsync();
             return await GetAsync(entity.Id);
         }
@@ -48,7 +48,7 @@ namespace API_training.Repositories
         /// <inheritdoc cref="IDeletable{TDto, TModel}.DeleteAsync(long[])"/>
         public async Task DeleteAsync(params long[] ids)
         {
-            var entities = await DbSet
+            var entities = await _dbSet
                                 .Where(x => ids.Contains(x.Id))
                                 .ToListAsync();
 
@@ -59,9 +59,9 @@ namespace API_training.Repositories
         /// <inheritdoc cref="IGettableById{TDto, TModel}.GetAsync(long)"/>
         public async Task<TDto> GetAsync(long id)
         {
-            var entity = await DbSet
-                              .AsNoTracking()
-                              .FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await DefaultIncludeProperties(_dbSet)
+                             .AsNoTracking()
+                             .FirstOrDefaultAsync(x => x.Id == id);
 
             var dto = _mapper.Map<TDto>(entity);
 
@@ -82,11 +82,18 @@ namespace API_training.Repositories
         /// <inheritdoc cref="IGettable{TDto, TModel}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<TDto>> GetAsync(CancellationToken token = default)
         {
-            var entities = await DbSet.AsNoTracking().ToListAsync();
+            var entities = await _dbSet.AsNoTracking().ToListAsync();
 
             var dtos = _mapper.Map<IEnumerable<TDto>>(entities);
 
             return dtos;
         }
+
+
+        /// <summary>
+        /// Добавляет к выборке связанные параметры
+        /// </summary>
+        /// <param name="dbSet">Коллекция DbSet репозитория</param>
+        protected virtual IQueryable<TModel> DefaultIncludeProperties(DbSet<TModel> dbSet) => dbSet;
     }
 }
