@@ -15,6 +15,8 @@ namespace API_training.Repositories.Bootstrap
         public static void ConfigureRepositories (this IServiceCollection services)
         {
             services.AddTransient<IBooksRepository, BooksRepository>();
+            services.AddTransient<IGenresRepository, GenresRepository>();
+
         }
     }
 }

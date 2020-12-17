@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using System.Reflection;
 using API_training.Common;
 using API_training.Controllers;
@@ -19,10 +20,11 @@ namespace API_training
     /// </summary>
     public class Startup
     {
+        
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
-        /// <param name="configuration">Конфигурация</param>
+        /// <param name="configuration">Конфигурация</param>         
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
