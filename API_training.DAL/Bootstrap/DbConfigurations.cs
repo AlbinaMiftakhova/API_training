@@ -16,12 +16,13 @@ namespace API_training.DAL.Bootstrap
         /// </summary>
         /// <param name="services">Коллекция сервисов</param>
         /// <param name="configuration">Конфигурация</param>
-        public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration, string _connection)
         {
             services.AddDbContext<ApiTrainingContext>(
                 options => options.UseNpgsql(
-                    configuration.GetConnectionString(nameof(ApiTrainingContext)),
+                    configuration.GetConnectionString(_connection),
                     builder => builder.MigrationsAssembly(typeof(ApiTrainingContext).Assembly.FullName))
+
             );
         }
     }

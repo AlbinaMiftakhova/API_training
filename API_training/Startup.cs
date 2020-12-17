@@ -1,3 +1,4 @@
+using System.Data.SqlClient;
 using System.Reflection;
 using API_training.Common;
 using API_training.Controllers;
@@ -20,6 +21,8 @@ namespace API_training
     /// </summary>
     public class Startup
     {
+        private string _connection = null;
+
         /// <summary>
         /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
@@ -40,7 +43,10 @@ namespace API_training
         /// <param name="services">Коллекция сервисов</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureDb(Configuration);
+           var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("ApiTrainingContext"));
+            builder.Password = Configuration["Password"];
+            _connection = builder.ConnectionString;
+            services.ConfigureDb(Configuration, _connection);
             services.ConfigureRepositories();
             services.AddControllers();
             services.ConfigureServices();
@@ -49,6 +55,7 @@ namespace API_training
                 typeof(BooksController).GetTypeInfo().Assembly
             );
             services.ConfigureSwagger();
+            
         }
 
         /// <summary>
