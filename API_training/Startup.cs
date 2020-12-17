@@ -5,7 +5,6 @@ using API_training.DAL.Bootstrap;
 using API_training.Repositories;
 using API_training.Repositories.Bootstrap;
 using API_training.Services.Bootstrap;
-using API_training.Services.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

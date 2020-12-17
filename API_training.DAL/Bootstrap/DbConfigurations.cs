@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using API_training.DAL.Contexts;
+using System.Data.SqlClient;
 
 namespace API_training.DAL.Bootstrap
 {
@@ -20,8 +21,8 @@ namespace API_training.DAL.Bootstrap
         {
             services.AddDbContext<ApiTrainingContext>(
                 options => options.UseNpgsql(
-                    configuration.GetConnectionString(nameof(ApiTrainingContext)),
-                    builder => builder.MigrationsAssembly(typeof(ApiTrainingContext).Assembly.FullName))
+                    configuration["ApiTrainingContext"],
+            builder => builder.MigrationsAssembly(typeof(ApiTrainingContext).Assembly.FullName))
             );
         }
     }
