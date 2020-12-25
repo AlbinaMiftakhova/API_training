@@ -3,16 +3,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using API_training.Models.DTO;
-using API_training.Services.Interfaces;
-using API_training.Common;
 using System.Threading;
 using System.Threading.Tasks;
-using API_training.Models.Requests.Books;
 using AutoMapper;
-using API_training.Models.Responses.Books;
 using API_training.Models.Requests.Genres;
 using API_training.Models.Responses.Genres;
 using API_training.Repositories;
+using API_training.Common;
 
 namespace API_training.Controllers
 {
@@ -21,7 +18,7 @@ namespace API_training.Controllers
     /// </summary>
     [Route("/[controller]/[action]")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = DocumentPartsConst.Genre)]
+    //[ApiExplorerSettings(GroupName = DocumentPartsConst.Genre)]
     public class GenresController : ControllerBase
     {
         private readonly ILogger<GenresController> _logger;

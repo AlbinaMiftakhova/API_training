@@ -19,6 +19,11 @@
             Константа для swagger-документа "Жанры"
             </summary>
         </member>
+        <member name="F:API_training.Common.DocumentPartsConst.User">
+            <summary>
+            Константа для swagger-документа "Авторизация и аутентификация"
+            </summary>
+        </member>
         <member name="T:API_training.Common.SwaggerConfiguration">
             <summary>
             Расширения для конфигурации Swagger
@@ -140,6 +145,382 @@
             <summary>
             Инициализирует экземпляр <see cref="T:API_training.Controllers.Mappings.GenresProfile"/>
             </summary>
+        </member>
+        <member name="T:API_training.Controllers.RequestResponse.Request">
+            <summary>
+            Запрос
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.Request.UserName">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.Request.Password">
+            <summary>
+            Пароль
+            </summary>
+        </member>
+        <member name="T:API_training.Controllers.RequestResponse.RequestResult">
+            <summary>
+            Ответ
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RequestResult.UserName">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RequestResult.Role">
+            <summary>
+            Роль
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RequestResult.OriginalUserName">
+            <summary>
+            Настоящее имя полльзователя
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RequestResult.AccessToken">
+            <summary>
+            Токен
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RequestResult.RefreshToken">
+            <summary>
+            Токен для обновления предыдущего токена
+            </summary>
+        </member>
+        <member name="T:API_training.Controllers.RequestResponse.RefreshTokenRequest">
+            <summary>
+            Запрос на обновление токена с истекшим сроком
+            </summary>
+        </member>
+        <member name="P:API_training.Controllers.RequestResponse.RefreshTokenRequest.RefreshToken">
+            <summary>
+            Токен для обновления
+            </summary>
+        </member>
+        <member name="T:API_training.Controllers.UserController">
+            <summary>
+            Контроллер авторизации и аутентификации
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.UserController.#ctor(Microsoft.Extensions.Logging.ILogger{API_training.Controllers.UserController},API_training.Services.Interfaces.IUserService,API_training.Infrastructure.IJwtAuthManager)">
+            <summary>
+            Конструктор <see cref="T:API_training.Controllers.UserController"/>
+            </summary>
+            <param name="logger">Логгер</param>
+            <param name="userService">Сервис</param>
+            <param name="jwtAuthManager">Менеджер авторизации</param>
+        </member>
+        <member name="M:API_training.Controllers.UserController.Login(API_training.Controllers.RequestResponse.Request)">
+            <summary>
+            Выполнение входа
+            </summary>
+            <param name="request">Запрос на аутентификацию</param>
+            <returns><see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/></returns>
+        </member>
+        <member name="M:API_training.Controllers.UserController.GetCurrentUser">
+            <summary>
+            Получает текущего пользователя
+            </summary>
+            <returns><see cref="T:API_training.Controllers.RequestResponse.RequestResult"/></returns>
+        </member>
+        <member name="M:API_training.Controllers.UserController.Logout">
+            <summary>
+            Выходит из учетной записи
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.UserController.RefreshToken(API_training.Controllers.RequestResponse.RefreshTokenRequest)">
+            <summary>
+            Обновление JWT-токена
+            </summary>
+            <param name="request"><see cref="T:API_training.Controllers.RequestResponse.RefreshTokenRequest"/></param>
+            <returns><see cref="T:API_training.Controllers.RequestResponse.RequestResult"/></returns>
+        </member>
+        <member name="T:API_training.Controllers.ValuesController">
+            <summary>
+            Value controller for example Authorize decorator.
+            </summary>
+        </member>
+        <member name="M:API_training.Controllers.ValuesController.#ctor(Microsoft.Extensions.Logging.ILogger{API_training.Controllers.ValuesController})">
+            <summary>
+            Initialize <see cref="T:API_training.Controllers.ValuesController"/>
+            </summary>
+            <param name="logger">Logger.</param>
+        </member>
+        <member name="M:API_training.Controllers.ValuesController.Get">
+            <summary>
+            Test endpoint.
+            </summary>
+        </member>
+        <member name="T:API_training.Infrastructure.IJwtAuthManager">
+            <summary>
+            Интерфейс менеджера аутентификации
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.IJwtAuthManager.UsersRefreshTokens">
+            <summary>
+            Словарь рефреш-токенов
+            </summary>
+        </member>
+        <member name="M:API_training.Infrastructure.IJwtAuthManager.GenerateTokens(System.String,System.Security.Claims.Claim[],System.DateTime)">
+            <summary>
+            Создание токена
+            </summary>
+            <param name="username">Имя пользователя</param>
+            <param name="claims">Claims</param>
+            <param name="now">Время создания</param>
+            <returns><see cref="T:API_training.Infrastructure.JwtResult"/></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.IJwtAuthManager.Refresh(System.String,System.String,System.DateTime)">
+            <summary>
+            овление токена
+            </summary>
+            <param name="refreshToken">рефреш токен</param>
+            <param name="accessToken">AT</param>
+            <param name="now">Время создания</param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.IJwtAuthManager.RemoveExpiredRT(System.DateTime)">
+            <summary>
+            Удаление рефреш токена
+            </summary>
+            <param name="now">Время</param>
+        </member>
+        <member name="M:API_training.Infrastructure.IJwtAuthManager.RemoveRefreshTokenByUserName(System.String)">
+            <summary>
+            Обновление токена конкретного пользователя
+            </summary>
+            <param name="userName">Имя пользователя</param>
+        </member>
+        <member name="M:API_training.Infrastructure.IJwtAuthManager.DecodeJwtToken(System.String)">
+            <summary>
+            Декодирование токена
+            </summary>
+            <param name="token">AT</param>
+        </member>
+        <member name="T:API_training.Infrastructure.JwtAuthManager">
+            <summary>
+            Менеджер аутентификации
+            </summary>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.#ctor(API_training.Infrastructure.JwtToken)">
+            <summary>
+            Конструктор <see cref="T:API_training.Infrastructure.JwtAuthManager"/>
+            </summary>
+            <param name="JwtToken"><see cref="T:API_training.Infrastructure.JwtToken"/></param>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.RemoveExpiredRT(System.DateTime)">
+            <summary>
+            Удаление рефреш токенов с истекшим сроком
+            </summary>
+            <param name="now"></param>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.RemoveRefreshTokenByUserName(System.String)">
+            <summary>
+            Удаление рефреш токена по имени пользователя
+            </summary>
+            <param name="userName"></param>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.GenerateTokens(System.String,System.Security.Claims.Claim[],System.DateTime)">
+            <summary>
+            Создание токена
+            </summary>
+            <param name="username"></param>
+            <param name="claims"></param>
+            <param name="now"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.Refresh(System.String,System.String,System.DateTime)">
+            <summary>
+            Обновление токена 
+            </summary>
+            <param name="refreshToken"></param>
+            <param name="accessToken"></param>
+            <param name="now"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.DecodeJwtToken(System.String)">
+            <summary>
+            Расшифровка токена
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtAuthManager.GenerateRefreshTokenString">
+            <summary>
+            Создание рефреш токена
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:API_training.Infrastructure.JwtRefreshTokenCache">
+            <summary>
+            Кэширование рефреш токена
+            </summary>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtRefreshTokenCache.#ctor(API_training.Infrastructure.IJwtAuthManager)">
+            <summary>
+            Конструктор <see cref="T:API_training.Infrastructure.JwtRefreshTokenCache"/>
+            </summary>
+            <param name="jwtAuthManager"><see cref="T:API_training.Infrastructure.IJwtAuthManager"/></param>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtRefreshTokenCache.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Удаляет каждую минуту старые рефреш токены
+            </summary>
+            <param name="stoppingToken"><see cref="T:System.Threading.CancellationToken"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtRefreshTokenCache.Remove(System.Object)">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtRefreshTokenCache.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Остановка удаления
+            </summary>
+        </member>
+        <member name="M:API_training.Infrastructure.JwtRefreshTokenCache.Dispose">
+            <summary>
+            Dispose timer.
+            </summary>
+        </member>
+        <member name="T:API_training.Infrastructure.JwtResult">
+            <summary>
+            Ответ
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtResult.AccessToken">
+            <summary>
+            Токен
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtResult.RefreshToken">
+            <summary>
+            Рефреш токен
+            </summary>
+        </member>
+        <member name="T:API_training.Infrastructure.JwtToken">
+            <summary>
+            AT config from appconfig.
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtToken.Secret">
+            <summary>
+            Секретный ключ
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtToken.Issuer">
+            <summary>
+            Издатель
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtToken.Audience">
+            <summary>
+            Audience
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtToken.AccessTokenExpiration">
+            <summary>
+            Время истечения срока годности
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.JwtToken.RefreshTokenExpiration">
+            <summary>
+            Время истечения срока годности рефреш токена
+            </summary>
+        </member>
+        <member name="T:API_training.Infrastructure.RefreshToken">
+            <summary>
+            Модель рефреш токена
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.RefreshToken.UserName">
+            <summary>
+            Имя пользователя
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.RefreshToken.RT">
+            <summary>
+            Значение
+            </summary>
+        </member>
+        <member name="P:API_training.Infrastructure.RefreshToken.ExpireAt">
+            <summary>
+            Время окончания действия
+            </summary>
+        </member>
+        <member name="T:API_training.Infrastructure.UserRoles">
+            <summary>
+            Roles.
+            </summary>
+        </member>
+        <member name="F:API_training.Infrastructure.UserRoles.Admin">
+            <summary>
+            Admin role.
+            </summary>
+        </member>
+        <member name="F:API_training.Infrastructure.UserRoles.Default">
+            <summary>
+            Default role.
+            </summary>
+        </member>
+        <member name="T:API_training.Services.Interfaces.IUserService">
+            <summary>
+            Интерфейс пользователи
+            </summary>
+        </member>
+        <member name="M:API_training.Services.Interfaces.IUserService.IsAnExistingUser(System.String)">
+            <summary>
+            Проверка пользователя на сущствование
+            </summary>
+        </member>
+        <member name="M:API_training.Services.Interfaces.IUserService.IsValidUserCredentials(System.String,System.String)">
+            <summary>
+            Проверка данных входа
+            </summary>
+        </member>
+        <member name="M:API_training.Services.Interfaces.IUserService.GetUserRole(System.String)">
+            <summary>
+            Получение роли пользователя
+            </summary>
+        </member>
+        <member name="T:API_training.Services.UserService">
+            <summary>
+            Сервис пользователи
+            </summary>
+        </member>
+        <member name="M:API_training.Services.UserService.#ctor(Microsoft.Extensions.Logging.ILogger{API_training.Services.UserService},API_training.DAL.Contexts.ApiTrainingContext)">
+            <summary>
+            Конструктор <see cref="T:API_training.Services.UserService"/>
+            </summary>
+            <param name="logger">Логгер</param>
+            <param name="context">Контекст</param>
+        </member>
+        <member name="M:API_training.Services.UserService.IsValidUserCredentials(System.String,System.String)">
+            <summary>
+            Проверка данных входа
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Services.UserService.IsAnExistingUser(System.String)">
+            <summary>
+            Проверка на существование пользователя
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_training.Services.UserService.GetUserRole(System.String)">
+            <summary>
+            Получение роли пользователя
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
         </member>
         <member name="T:API_training.Startup">
             <summary>

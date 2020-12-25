@@ -1,5 +1,6 @@
 ﻿using API_training.DAL.Domain;
 using API_training.DAL.Fluent;
+using API_training.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_training.DAL.Contexts
@@ -24,11 +25,25 @@ namespace API_training.DAL.Contexts
         /// </summary>
         public DbSet<Available> Availables { get; set; }
 
-
         /// <summary>
-        /// Наличие в библиотеке
+        /// Жанры
         /// </summary>
         public DbSet<Genre> Genres { get; set; }
+
+        /// <summary>
+        /// Пользователи
+        /// </summary>
+        public DbSet<User> Users { get; set; }
+
+        /// <summary>
+        /// Роли
+        /// </summary>
+        public DbSet<Role> Roles { get; set; }
+
+        /// <summary>
+        /// Роли пользователей
+        /// </summary>
+        public DbSet<UserRoles> UserRoles { get; set; }
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="ApiTrainingContext"/>
