@@ -14,5 +14,10 @@
         /// Константа для swagger-документа "Жанры"
         /// </summary>
         public const string Genre = nameof(Genre);
+
+        /// <summary>
+        /// Константа для swagger-документа "Авторизация и аутентификация"
+        /// </summary>
+        public const string User = nameof(User);
     }
 }

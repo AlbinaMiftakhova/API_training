@@ -19,7 +19,7 @@ namespace API_training.Controllers
     /// </summary>
     [Route("/[controller]/[action]")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = DocumentPartsConst.Books)]
+    //[ApiExplorerSettings(GroupName = DocumentPartsConst.Books)]
     public class BooksController : ControllerBase
     {
         private readonly ILogger<BooksController> _logger;
